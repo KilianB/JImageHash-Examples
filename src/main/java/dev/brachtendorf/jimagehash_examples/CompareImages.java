@@ -7,9 +7,9 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import com.github.kilianB.hash.Hash;
-import com.github.kilianB.hashAlgorithms.AverageHash;
-import com.github.kilianB.hashAlgorithms.HashingAlgorithm;
+import dev.brachtendorf.jimagehash.hash.Hash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.AverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.HashingAlgorithm;
 
 /**
  * An example demonstrating how two images can be compared at a time using a single algorithm
@@ -89,11 +89,11 @@ public class CompareImages {
 	private void loadImages() {
 		// Load images
 		try {
-			images.put("ballon", ImageIO.read(getClass().getResourceAsStream("images/ballon.jpg")));
-			images.put("copyright", ImageIO.read(getClass().getResourceAsStream("images/copyright.jpg")));
-			images.put("highQuality", ImageIO.read(getClass().getResourceAsStream("images/highQuality.jpg")));
-			images.put("lowQuality", ImageIO.read(getClass().getResourceAsStream("images/lowQuality.jpg")));
-			images.put("thumbnail", ImageIO.read(getClass().getResourceAsStream("images/thumbnail.jpg")));
+			images.put("ballon", ImageIO.read(new File("src/main/resources/images/ballon.jpg")));
+			images.put("copyright", ImageIO.read(new File("src/main/resources/images/copyright.jpg")));
+			images.put("highQuality", ImageIO.read(new File("src/main/resources/images/highQuality.jpg")));
+			images.put("lowQuality", ImageIO.read(new File("src/main/resources/images/lowQuality.jpg")));
+			images.put("thumbnail", ImageIO.read(new File("src/main/resources/images/thumbnail.jpg")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

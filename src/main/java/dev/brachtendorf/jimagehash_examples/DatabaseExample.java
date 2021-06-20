@@ -7,13 +7,13 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.PriorityQueue;
 
-import com.github.kilianB.datastructures.tree.Result;
-import com.github.kilianB.hashAlgorithms.AverageHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash.Precision;
-import com.github.kilianB.hashAlgorithms.PerceptiveHash;
-import com.github.kilianB.matcher.persistent.database.DatabaseImageMatcher;
-import com.github.kilianB.matcher.persistent.database.H2DatabaseImageMatcher;
+import dev.brachtendorf.jimagehash.datastructures.tree.Result;
+import dev.brachtendorf.jimagehash.hashAlgorithms.AverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash.Precision;
+import dev.brachtendorf.jimagehash.hashAlgorithms.PerceptiveHash;
+import dev.brachtendorf.jimagehash.matcher.persistent.database.DatabaseImageMatcher;
+import dev.brachtendorf.jimagehash.matcher.persistent.database.H2DatabaseImageMatcher;
 
 /**
  * @author Kilian

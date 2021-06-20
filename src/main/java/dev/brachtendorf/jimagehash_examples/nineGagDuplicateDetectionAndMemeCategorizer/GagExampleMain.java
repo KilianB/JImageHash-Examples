@@ -27,14 +27,14 @@ import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.G
 import com.github.kilianB.graphics.ColorUtil;
 import com.github.kilianB.graphics.FastPixel;
 import com.github.kilianB.graphics.ImageUtil;
-import com.github.kilianB.hash.FuzzyHash;
-import com.github.kilianB.hash.Hash;
-import com.github.kilianB.hashAlgorithms.AverageHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash.Precision;
-import com.github.kilianB.hashAlgorithms.HashingAlgorithm;
-import com.github.kilianB.hashAlgorithms.PerceptiveHash;
-import com.github.kilianB.matcher.categorize.CategoricalMatcher;
+import dev.brachtendorf.jimagehash.hash.FuzzyHash;
+import dev.brachtendorf.jimagehash.hash.Hash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.AverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash.Precision;
+import dev.brachtendorf.jimagehash.hashAlgorithms.HashingAlgorithm;
+import dev.brachtendorf.jimagehash.hashAlgorithms.PerceptiveHash;
+import dev.brachtendorf.jimagehash.matcher.categorize.CategoricalMatcher;
 
 import javafx.scene.paint.Color;
 

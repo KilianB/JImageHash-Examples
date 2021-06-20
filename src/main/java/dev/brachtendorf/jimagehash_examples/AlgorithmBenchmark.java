@@ -2,19 +2,19 @@ package dev.brachtendorf.jimagehash_examples;
 
 import java.io.File;
 
-import com.github.kilianB.hashAlgorithms.AverageHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash.Precision;
-import com.github.kilianB.hashAlgorithms.MedianHash;
-import com.github.kilianB.hashAlgorithms.PerceptiveHash;
-import com.github.kilianB.hashAlgorithms.RotAverageHash;
-import com.github.kilianB.hashAlgorithms.RotPHash;
-import com.github.kilianB.hashAlgorithms.experimental.HogHash;
-import com.github.kilianB.hashAlgorithms.experimental.HogHashAngularEncoded;
-import com.github.kilianB.hashAlgorithms.experimental.HogHashDual;
-import com.github.kilianB.hashAlgorithms.filter.Kernel;
-import com.github.kilianB.matcher.categorize.supervised.LabeledImage;
-import com.github.kilianB.matcher.exotic.SingleImageMatcher;
+import dev.brachtendorf.jimagehash.hashAlgorithms.AverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash.Precision;
+import dev.brachtendorf.jimagehash.hashAlgorithms.MedianHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.PerceptiveHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.RotAverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.RotPHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.experimental.HogHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.experimental.HogHashAngularEncoded;
+import dev.brachtendorf.jimagehash.hashAlgorithms.experimental.HogHashDual;
+import dev.brachtendorf.jimagehash.hashAlgorithms.filter.Kernel;
+import dev.brachtendorf.jimagehash.matcher.categorize.supervised.LabeledImage;
+import dev.brachtendorf.jimagehash.matcher.exotic.SingleImageMatcher;
 
 /**
  * 

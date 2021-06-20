@@ -17,11 +17,11 @@ import java.util.logging.Logger;
 
 import dev.brachtendorf.ArrayUtil;
 import dev.brachtendorf.MathUtil;
-import com.github.kilianB.hash.Hash;
-import com.github.kilianB.hashAlgorithms.HashingAlgorithm;
-import com.github.kilianB.matcher.TypedImageMatcher.AlgoSettings;
-import com.github.kilianB.matcher.categorize.supervised.LabeledImage;
-import com.github.kilianB.matcher.exotic.SingleImageMatcher;
+import dev.brachtendorf.jimagehash.hash.Hash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.HashingAlgorithm;
+import dev.brachtendorf.jimagehash.matcher.TypedImageMatcher.AlgoSettings;
+import dev.brachtendorf.jimagehash.matcher.categorize.supervised.LabeledImage;
+import dev.brachtendorf.jimagehash.matcher.exotic.SingleImageMatcher;
 
 import javafx.application.Application;
 import javafx.application.Platform;

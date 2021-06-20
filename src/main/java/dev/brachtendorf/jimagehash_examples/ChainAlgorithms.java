@@ -1,18 +1,19 @@
 package dev.brachtendorf.jimagehash_examples;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
-import com.github.kilianB.hashAlgorithms.AverageHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash;
-import com.github.kilianB.hashAlgorithms.DifferenceHash.Precision;
-import com.github.kilianB.hashAlgorithms.HashingAlgorithm;
-import com.github.kilianB.hashAlgorithms.PerceptiveHash;
-import com.github.kilianB.hashAlgorithms.WaveletHash;
-import com.github.kilianB.matcher.exotic.SingleImageMatcher;
+import dev.brachtendorf.jimagehash.hashAlgorithms.AverageHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.DifferenceHash.Precision;
+import dev.brachtendorf.jimagehash.hashAlgorithms.HashingAlgorithm;
+import dev.brachtendorf.jimagehash.hashAlgorithms.PerceptiveHash;
+import dev.brachtendorf.jimagehash.hashAlgorithms.WaveletHash;
+import dev.brachtendorf.jimagehash.matcher.exotic.SingleImageMatcher;
 
 /**
  * To increase the quality of the returned results it can be useful to chain
@@ -34,10 +35,10 @@ public class ChainAlgorithms {
 		 * default matcher chains an average hash followed by a perceptive hash
 		 */
 		SingleImageMatcher matcher = new SingleImageMatcher();
-		
-		//Add hashing algorithms as you please. Both hashes will be queried
-		matcher.addHashingAlgorithm(new AverageHash(64),.3);
-		matcher.addHashingAlgorithm(new WaveletHash(32,3),.3);
+
+		// Add hashing algorithms as you please. Both hashes will be queried
+		matcher.addHashingAlgorithm(new AverageHash(64), .3);
+		matcher.addHashingAlgorithm(new WaveletHash(32, 3), .3);
 
 		// Lets get two images
 		BufferedImage img1 = images.get("ballon");
@@ -50,7 +51,6 @@ public class ChainAlgorithms {
 			System.out.println("Ballon & Low Quality are distinct images");
 		}
 	}
-
 
 	/**
 	 * Demonstrates how to fully configure a SingleImageMatcher. Choose own
@@ -106,11 +106,11 @@ public class ChainAlgorithms {
 	private void loadImages() {
 		// Load images
 		try {
-			images.put("ballon", ImageIO.read(getClass().getResourceAsStream("images/ballon.jpg")));
-			images.put("copyright", ImageIO.read(getClass().getResourceAsStream("images/copyright.jpg")));
-			images.put("highQuality", ImageIO.read(getClass().getResourceAsStream("images/highQuality.jpg")));
-			images.put("lowQuality", ImageIO.read(getClass().getResourceAsStream("images/lowQuality.jpg")));
-			images.put("thumbnail", ImageIO.read(getClass().getResourceAsStream("images/thumbnail.jpg")));
+			images.put("ballon", ImageIO.read(new File("src/main/resources/images/ballon.jpg")));
+			images.put("copyright", ImageIO.read(new File("src/main/resources/images/copyright.jpg")));
+			images.put("highQuality", ImageIO.read(new File("src/main/resources/images/highQuality.jpg")));
+			images.put("lowQuality", ImageIO.read(new File("src/main/resources/images/lowQuality.jpg")));
+			images.put("thumbnail", ImageIO.read(new File("src/main/resources/images/thumbnail.jpg")));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
