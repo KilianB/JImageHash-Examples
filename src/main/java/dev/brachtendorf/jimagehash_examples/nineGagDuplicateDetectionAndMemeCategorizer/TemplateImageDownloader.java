@@ -1,4 +1,4 @@
-package dev.brachtendorf.nineGagDuplicateDetectionAndMemeCategorizer;
+package dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer;
 
 import java.io.File;
 import java.io.IOException;

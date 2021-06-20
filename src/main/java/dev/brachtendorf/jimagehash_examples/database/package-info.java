@@ -2,4 +2,4 @@
  * @author Kilian
  *
  */
-package dev.brachtendorf.nineGagDuplicateDetectionAndMemeCategorizer.database;
+package dev.brachtendorf.jimagehash_examples.database;

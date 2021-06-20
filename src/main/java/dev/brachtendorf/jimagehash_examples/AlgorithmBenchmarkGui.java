@@ -1,4 +1,4 @@
-package com.github.kilianB.benchmark;
+package dev.brachtendorf.jimagehash_examples;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -62,9 +62,9 @@ import javafx.stage.Stage;
  * @author Kilian
  * @since 2.0.0
  */
-public class AlgorithmBenchmarker {
+public class AlgorithmBenchmarkGui {
 
-	private static final Logger LOGGER = Logger.getLogger(AlgorithmBenchmarker.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(AlgorithmBenchmarkGui.class.getName());
 
 	/** HTML base template */
 	private static String htmlBase = buildHtmlBase();
@@ -111,7 +111,7 @@ public class AlgorithmBenchmarker {
 	 *                       supplied images per algorithm or allows for a total
 	 *                       computation time of 90 seconds. Whichever takes less.
 	 */
-	public AlgorithmBenchmarker(SingleImageMatcher imageMatcher, boolean speedBenchmark) {
+	public AlgorithmBenchmarkGui(SingleImageMatcher imageMatcher, boolean speedBenchmark) {
 		this.timming = speedBenchmark;
 		this.imageMatcher = imageMatcher;
 		this.buckets = 10;
@@ -142,7 +142,7 @@ public class AlgorithmBenchmarker {
 	 *                       more esthetic but are not as accurate as the stepped
 	 *                       version.
 	 */
-	public AlgorithmBenchmarker(SingleImageMatcher imageMatcher, boolean speedBenchmark, int bucket, boolean stepped) {
+	public AlgorithmBenchmarkGui(SingleImageMatcher imageMatcher, boolean speedBenchmark, int bucket, boolean stepped) {
 		this.timming = speedBenchmark;
 		this.imageMatcher = imageMatcher;
 		this.buckets = bucket;
@@ -675,7 +675,7 @@ public class AlgorithmBenchmarker {
 
 		boolean success = false;
 
-		URL jScript = AlgorithmBenchmarker.class.getClassLoader().getResource("Chart.bundle.min.js");
+		URL jScript = AlgorithmBenchmarkGui.class.getClassLoader().getResource("Chart.bundle.min.js");
 		if (jScript != null) {
 			File javascriptScript = new File(jScript.getFile());
 			htmlBuilder.append("<script src=\"").append(javascriptScript.getAbsolutePath()).append("\"></script>");

@@ -1,4 +1,4 @@
-package dev.brachtendorf.nineGagDuplicateDetectionAndMemeCategorizer.model;
+package dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model;
 
 import java.awt.Dimension;
 import java.net.MalformedURLException;

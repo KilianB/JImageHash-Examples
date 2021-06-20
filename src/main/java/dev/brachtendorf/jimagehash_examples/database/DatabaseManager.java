@@ -1,4 +1,4 @@
-package dev.brachtendorf.nineGagDuplicateDetectionAndMemeCategorizer.database;
+package dev.brachtendorf.jimagehash_examples.database;
 
 import java.awt.Dimension;
 import java.net.URL;
@@ -16,12 +16,12 @@ import java.util.logging.Logger;
 
 import org.h2.jdbcx.JdbcDataSource;
 
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.AnimatedPost;
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.ImagePost;
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.PostItem;
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.PostItem.Type;
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.Section;
-import com.github.kilianB.examples.nineGagDuplicateDetectionAndMemeCategorizer.model.Tag;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.AnimatedPost;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.ImagePost;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.PostItem;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.PostItem.Type;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.Section;
+import dev.brachtendorf.jimagehash_examples.nineGagDuplicateDetectionAndMemeCategorizer.model.Tag;
 
 public class DatabaseManager implements AutoCloseable {
 

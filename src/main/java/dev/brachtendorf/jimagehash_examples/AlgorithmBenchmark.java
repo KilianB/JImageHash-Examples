@@ -1,8 +1,7 @@
-package dev.brachtendorf;
+package dev.brachtendorf.jimagehash_examples;
 
 import java.io.File;
 
-import com.github.kilianB.benchmark.AlgorithmBenchmarker;
 import com.github.kilianB.hashAlgorithms.AverageHash;
 import com.github.kilianB.hashAlgorithms.DifferenceHash;
 import com.github.kilianB.hashAlgorithms.DifferenceHash.Precision;
@@ -28,6 +27,8 @@ import com.github.kilianB.matcher.exotic.SingleImageMatcher;
 @SuppressWarnings("deprecation")
 public class AlgorithmBenchmark {
 
+	private static final String IMAGE_PATH = "src/main/resources/images/";
+
 	public static void main(String[] args) {
 
 		/*
@@ -43,13 +44,13 @@ public class AlgorithmBenchmark {
 		benchmakDefaultAlgorthms();
 
 		/* Hue sat */
-		//benchmarkDefaultHueSat();
+		// benchmarkDefaultHueSat();
 
 		// Algorithms which are able to work with rotated images
-		benchmarkRotationalHashes();
+		//benchmarkRotationalHashes();
 
 		// Algorithms who might be release ready in one of the following versions
-		//benchmarkExperimentalHashingAlgos();
+		// benchmarkExperimentalHashingAlgos();
 	}
 
 	/**
@@ -66,22 +67,21 @@ public class AlgorithmBenchmark {
 		matcher.addHashingAlgorithm(new AverageHash(8), 0.4);
 		matcher.addHashingAlgorithm(new AverageHash(32), 0.4);
 		matcher.addHashingAlgorithm(new AverageHash(64), 0.4);
-		
+
 		matcher.addHashingAlgorithm(new PerceptiveHash(32), 0.4);
 		matcher.addHashingAlgorithm(new PerceptiveHash(64), 0.4);
-		
+
 		matcher.addHashingAlgorithm(new MedianHash(32), 0.4);
 		matcher.addHashingAlgorithm(new MedianHash(64), 0.4);
-		
+
 		matcher.addHashingAlgorithm(new DifferenceHash(64, Precision.Simple), 0.4);
 		matcher.addHashingAlgorithm(new DifferenceHash(32, Precision.Triple), 0.4);
-		
-		
+
 		// 2. Create a benchmarker
 
 		/*
 		 * Depending on the algorithm speed benchmarks can be expensive and will take up
-		 * a majority of the time spend while benchmarking. Please also be adviced that
+		 * a majority of the time spend while benchmarking. Please also be advised that
 		 * micro benchmarking is a complex topic and here we only follow a naive
 		 * approach without taking care of JVM optimization like loop unfolding, dead
 		 * code elimination, caching etc ... If you want to properly benchmark the
@@ -90,7 +90,7 @@ public class AlgorithmBenchmark {
 		 */
 		boolean speedBenchmark = true;
 
-		AlgorithmBenchmarker ab = new AlgorithmBenchmarker(matcher, speedBenchmark);
+		AlgorithmBenchmarkGui ab = new AlgorithmBenchmarkGui(matcher, speedBenchmark);
 
 		// 2. Add some images we want to test.
 		addDefaultTestImages(ab);
@@ -99,11 +99,11 @@ public class AlgorithmBenchmark {
 
 		/* 3.1 Display report as javafx application(charts won't be available) */
 		// ab.display();
-		
+
 		/* 3.2 To console as html file */
 		// ab.toConsole();
-		
-		/* 3.3 Output as html file (link will be printed to the console)*/
+
+		/* 3.3 Output as html file (link will be printed to the console) */
 		ab.toFile();
 	}
 
@@ -147,7 +147,7 @@ public class AlgorithmBenchmark {
 		 */
 		boolean speedBenchmark = false;
 
-		AlgorithmBenchmarker ab = new AlgorithmBenchmarker(matcher, speedBenchmark);
+		AlgorithmBenchmarkGui ab = new AlgorithmBenchmarkGui(matcher, speedBenchmark);
 
 		// 2. Add some images we want to test.
 		addDefaultTestImages(ab);
@@ -157,12 +157,12 @@ public class AlgorithmBenchmark {
 
 		/* 3.1 Display report as javafx application(charts won't be available) */
 		ab.display();
-		
+
 		/* 3.2 To console as html file */
 		// ab.toConsole();
-		
-		/* 3.3 Output as html file (link will be printed to the console)*/
-		//ab.toFile();
+
+		/* 3.3 Output as html file (link will be printed to the console) */
+		// ab.toFile();
 	}
 
 	public static void benchmarkRotationalHashes() {
@@ -181,19 +181,18 @@ public class AlgorithmBenchmark {
 		imageMatcher.addHashingAlgorithm(new RotPHash(64), 0.1);
 		imageMatcher.addHashingAlgorithm(new RotPHash(128), 0.1);
 
-
 		imageMatcher.addHashingAlgorithm(new AverageHash(16), 0.4);
 		imageMatcher.addHashingAlgorithm(new AverageHash(64), 0.4);
 		imageMatcher.addHashingAlgorithm(new PerceptiveHash(16), 0.4);
 		imageMatcher.addHashingAlgorithm(new PerceptiveHash(64), 0.4);
 
 		// 2. Create the object
-		AlgorithmBenchmarker db = new AlgorithmBenchmarker(imageMatcher, true);
+		AlgorithmBenchmarkGui db = new AlgorithmBenchmarkGui(imageMatcher, true);
 
 		// Add ballon as contrast
 
 		addRotationalTestImages(db);
-		db.addTestImages(new LabeledImage(4, new File("src/test/resources/ballon.jpg")));
+		db.addTestImages(new LabeledImage(4, new File(IMAGE_PATH + "ballon.jpg")));
 
 		db.display();
 		db.toFile();
@@ -204,9 +203,10 @@ public class AlgorithmBenchmark {
 		SingleImageMatcher imageMatcher = new SingleImageMatcher();
 
 		// 2. Create the object
-		AlgorithmBenchmarker db = new AlgorithmBenchmarker(imageMatcher, false,30,false);
+		AlgorithmBenchmarkGui db = new AlgorithmBenchmarkGui(imageMatcher, false, 30, false);
 
-		//Hashing algorithm with filter  (really slow. Benchmarking will take a long time!)
+		// Hashing algorithm with filter (really slow. Benchmarking will take a long
+		// time!)
 		AverageHash aHash = new AverageHash(32);
 		aHash.addFilter(Kernel.gaussianFilter(5, 5, 3));
 
@@ -216,18 +216,18 @@ public class AlgorithmBenchmark {
 		HogHash hog128 = new HogHash(128);
 		HogHashDual hogDual128 = new HogHashDual(128);
 		HogHashDual hogAng128 = new HogHashDual(128);
-		
-		imageMatcher.addHashingAlgorithm(aHash,0.3);
-		imageMatcher.addHashingAlgorithm(hog64,0.3);
-		imageMatcher.addHashingAlgorithm(hogDual64,0.3);
-		imageMatcher.addHashingAlgorithm(hogAng64,0.3);
-		imageMatcher.addHashingAlgorithm(hog128,0.3);
-		imageMatcher.addHashingAlgorithm(hogDual128,0.3);
-		imageMatcher.addHashingAlgorithm(hogAng128,0.3);
-		
+
+		imageMatcher.addHashingAlgorithm(aHash, 0.3);
+		imageMatcher.addHashingAlgorithm(hog64, 0.3);
+		imageMatcher.addHashingAlgorithm(hogDual64, 0.3);
+		imageMatcher.addHashingAlgorithm(hogAng64, 0.3);
+		imageMatcher.addHashingAlgorithm(hog128, 0.3);
+		imageMatcher.addHashingAlgorithm(hogDual128, 0.3);
+		imageMatcher.addHashingAlgorithm(hogAng128, 0.3);
+
 		addDefaultTestImages(db);
 
-		//db.display();
+		// db.display();
 		db.toFile();
 	}
 
@@ -244,31 +244,34 @@ public class AlgorithmBenchmark {
 	 * 
 	 * @param benchmarker The benchmarker to add the images to
 	 */
-	private static void addDefaultTestImages(AlgorithmBenchmarker benchmarker) {
+	private static void addDefaultTestImages(AlgorithmBenchmarkGui benchmarker) {
 
 		// Add the ballon image to the benchmarker with a group label of 0
-		benchmarker.addTestImages(new LabeledImage(0, new File("src/test/resources/ballon.jpg")));
+		benchmarker.addTestImages(new LabeledImage(0, new File(IMAGE_PATH + "ballon.jpg")));
 
 		/*
 		 * The following images are distinct to ballon therefore we choose a different
 		 * group id. On the other hand they are all variations of the same image so they
 		 * are labeled with an id of 1.
 		 */
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/copyright.jpg")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/highQuality.jpg")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/lowQuality.jpg")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/thumbnail.jpg")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "copyright.jpg")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "highQuality.jpg")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "lowQuality.jpg")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "thumbnail.jpg")));
+
+		//benchmarker.addTestImages(new LabeledImage(2, new File(IMAGE_PATH + "transparent0.png")));
+		//benchmarker.addTestImages(new LabeledImage(3, new File(IMAGE_PATH + "transparent1.png")));
 	}
 
 	/**
 	 * 
 	 * @param benchmarker
 	 */
-	private static void addHueSatTestImages(AlgorithmBenchmarker benchmarker) {
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/highQualityBase.png")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/highQualityBright.png")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/highQualityDark.png")));
-		benchmarker.addTestImages(new LabeledImage(1, new File("src/test/resources/highQualityHue.png")));
+	private static void addHueSatTestImages(AlgorithmBenchmarkGui benchmarker) {
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "highQualityBase.png")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "highQualityBright.png")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "highQualityDark.png")));
+		benchmarker.addTestImages(new LabeledImage(1, new File(IMAGE_PATH + "highQualityHue.png")));
 	}
 
 	/**
@@ -277,11 +280,11 @@ public class AlgorithmBenchmark {
 	 * 
 	 * @param benchmarker to add the images to.
 	 */
-	private static void addRotationalTestImages(AlgorithmBenchmarker benchmarker) {
-		benchmarker.addTestImages(new LabeledImage(3, new File("src/test/resources/Lenna.png")));
-		benchmarker.addTestImages(new LabeledImage(3, new File("src/test/resources/Lenna90.png")));
-		benchmarker.addTestImages(new LabeledImage(3, new File("src/test/resources/Lenna180.png")));
-		benchmarker.addTestImages(new LabeledImage(3, new File("src/test/resources/Lenna270.png")));
+	private static void addRotationalTestImages(AlgorithmBenchmarkGui benchmarker) {
+		benchmarker.addTestImages(new LabeledImage(3, new File(IMAGE_PATH + "Lenna.png")));
+		benchmarker.addTestImages(new LabeledImage(3, new File(IMAGE_PATH + "Lenna90.png")));
+		benchmarker.addTestImages(new LabeledImage(3, new File(IMAGE_PATH + "Lenna180.png")));
+		benchmarker.addTestImages(new LabeledImage(3, new File(IMAGE_PATH + "Lenna270.png")));
 	}
 
 }
